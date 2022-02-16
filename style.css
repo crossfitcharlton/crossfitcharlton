@@ -1,0 +1,290 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  --text-color: rgb(241, 241, 75);
+  --fun-font: "Luckiest Guy", cursive;
+  --emphasis-font: "Red Hat Display", sans-serif;
+  --reading-font: sans-serif;
+  --max-width: 1280px;
+  --secondary-bg: #f8f89d;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background-color: black;
+}
+
+main {
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: 67% 33%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--emphasis-font);
+}
+
+p {
+  font-family: sans-serif;
+}
+
+.jumbotron {
+  position: relative;
+  width: 100%;
+  height: 66vh;
+}
+.jumbotron .hero-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 25% 75%;
+  opacity: 0.3;
+}
+.jumbotron .site-header {
+  position: absolute;
+  max-width: var(--max-width);
+  width: 100%;
+  width: 100%;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  padding: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.jumbotron .site-header .brand {
+  font-size: 2em;
+  text-shadow: 0 0 15px black;
+  margin: 0 0 15px 0;
+}
+.jumbotron .site-header .brand .wordmark {
+  position: absolute;
+  left: -999em;
+}
+.jumbotron .site-header .brand a {
+  background-image: url("crossfit-charlton-wordmark.svg");
+  background-repeat: no-repeat;
+  height: 40px;
+  width: 300px;
+  color: var(--text-color);
+  display: inline-block;
+  text-decoration: none;
+  transition: transform 0.3s ease;
+}
+.jumbotron .site-header .brand a:hover {
+  transform: scale(1.1);
+}
+.jumbotron .site-header .crossfit-journal-link a {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+.jumbotron .site-header .crossfit-journal-link a:hover {
+  transform: scale(1.1);
+}
+.jumbotron .hero-body {
+  color: yellow;
+  position: absolute;
+  max-width: var(--max-width);
+  width: 100%;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  padding: 0 30px;
+}
+.jumbotron .hero-body h2.teaser {
+  margin: 0;
+  font-size: 4em;
+  line-height: 1;
+  font-family: var(--fun-font);
+  font-weight: normal;
+  text-shadow: 0 0.1em 20px black, 0.05em -0.03em 0 black, 0.05em 0.005em 0 black, 0em 0.08em 0 black, 0.05em 0.08em 0 black, 0px -0.03em 0 black, -0.03em -0.03em 0 black, -0.03em 0.08em 0 black, -0.03em 0 0 black;
+}
+.jumbotron .hero-body h2.teaser .first-letter {
+  font-size: 1.2em;
+}
+@media screen and (min-width: 480px) {
+  .jumbotron .hero-body h2.teaser {
+    font-size: 5em;
+  }
+}
+.jumbotron .hero-body a {
+  color: var(--text-color);
+  font-size: 2em;
+  font-family: var(--emphasis-font);
+  text-shadow: 1px 1px 2px black;
+  display: inline-block;
+  transition: transform 0.3s ease;
+  text-decoration: none;
+}
+.jumbotron .hero-body a:hover {
+  transform: scale(1.1);
+}
+
+.bouncy-dots .dot {
+  display: inline-block;
+  margin: 0 3px;
+  animation: bounce 0.3s infinite alternate-reverse;
+}
+.bouncy-dots .dot:nth-of-type(2) {
+  animation-delay: 0.5s;
+}
+.bouncy-dots .dot:nth-of-type(3) {
+  animation-delay: 1s;
+}
+
+@keyframes bounce {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-6px);
+  }
+}
+.team {
+  background-color: var(--secondary-bg);
+  text-align: center;
+  padding: 30px;
+}
+.team h2 {
+  font-size: 2em;
+  margin: 0;
+}
+.team .team-flex {
+  max-width: var(--max-width);
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.team .team-flex .team-card {
+  display: flex;
+  flex-direction: column-reverse;
+  font-family: var(--emphasis-font);
+}
+.team .team-flex .team-card h3 {
+  font-size: 1.25em;
+  margin: 0;
+}
+.team .team-flex .team-card p {
+  margin: 0;
+}
+.team .team-flex .team-card img {
+  margin: 25px 15px 15px 15px;
+  display: block;
+  border-radius: 50%;
+  width: 300px;
+  height: 300px;
+  box-shadow: 0 0 18px 4px #00000042;
+}
+
+.subscribe {
+  padding: 50px 0;
+}
+.subscribe ~ div {
+  max-width: var(--max-width);
+  margin: auto;
+}
+.subscribe .embedForm {
+  box-shadow: 0 0 18px 4px #00000042;
+}
+.subscribe .embedForm h4 {
+  font-family: var(--emphasis-font) !important;
+}
+.subscribe .embedForm p {
+  font-family: var(--emphasis-font) !important;
+  font-size: 1em !important;
+}
+.subscribe #mlb2-5457113.ml-form-embedContainer .ml-form-embedWrapper {
+  background-color: var(--secondary-bg);
+  height: 285px;
+}
+.subscribe .ml-form-successBody {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  height: 285px;
+}
+.subscribe .ml-form-successBody .ml-form-successContent h4 {
+  text-align: center !important;
+  font-size: 2.5em !important;
+}
+.subscribe .ml-form-successBody p {
+  text-align: center !important;
+  font-size: 1.5em !important;
+  line-height: 1.5 !important;
+}
+
+.site-footer {
+  padding: 50px 30px;
+  background-color: #444546;
+  color: #dedede;
+  font-family: var(--emphasis-font);
+}
+.site-footer a {
+  color: #dedede;
+  text-decoration: none;
+}
+.site-footer a:hover {
+  text-decoration: underline;
+}
+.site-footer .footer-content {
+  max-width: var(--max-width);
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.site-footer .footer-content .nav-wrapper {
+  display: flex;
+  align-items: center;
+}
+.site-footer .footer-content nav ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  display: flex;
+}
+.site-footer .footer-content a:hover {
+  color: white;
+}
+.site-footer .footer-content .nav-secondary li {
+  margin: 0 20px;
+}
+.site-footer .footer-content .nav-social li {
+  margin: 0 20px;
+}
+.site-footer .footer-content .nav-social a::before {
+  content: "";
+  display: inline-block;
+  height: 28px;
+  width: 28px;
+  filter: invert(0.8);
+}
+.site-footer .footer-content .nav-social a.instagram::before {
+  background: transparent url("instagram.svg") 0 0 no-repeat;
+}
+.site-footer .footer-content .nav-social a.facebook::before {
+  background: transparent url("facebook.svg") 0 0 no-repeat;
+}
+.site-footer .footer-content .nav-social a:hover::before {
+  filter: invert(1);
+}
+.site-footer .footer-content .nav-social .visually-hidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute !important;
+  width: 1px;
+}
+
+/*# sourceMappingURL=style.css.map */
