@@ -9,18 +9,17 @@ html {
   --reading-font: sans-serif;
   --max-width: 1280px;
   --secondary-bg: #f8f89d;
+  --text-reverse-color: #dedede;
+  --bold-text-shadow: 0 0.1em 20px rgba(0, 0, 0, 1), 0.05em -0.03em 0 rgba(0, 0, 0, 1),
+  0.05em 0.005em 0 rgba(0, 0, 0, 1), 0em 0.08em 0 rgba(0, 0, 0, 1),
+  0.05em 0.08em 0 rgba(0, 0, 0, 1), 0px -0.03em 0 rgba(0, 0, 0, 1),
+  -0.03em -0.03em 0 rgba(0, 0, 0, 1), -0.03em 0.08em 0 rgba(0, 0, 0, 1), -0.03em 0 0 rgba(0, 0, 0, 1);
   scroll-behavior: smooth;
 }
 
 body {
   margin: 0;
   background-color: black;
-}
-
-main {
-  min-height: 100vh;
-  display: grid;
-  grid-template-rows: 67% 33%;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -104,9 +103,18 @@ p {
   font-family: var(--fun-font);
   font-weight: normal;
   text-shadow: 0 0.1em 20px black, 0.05em -0.03em 0 black, 0.05em 0.005em 0 black, 0em 0.08em 0 black, 0.05em 0.08em 0 black, 0px -0.03em 0 black, -0.03em -0.03em 0 black, -0.03em 0.08em 0 black, -0.03em 0 0 black;
+  position: relative;
+  /* Parent z-index context */
 }
 .jumbotron .hero-body h2.teaser .first-letter {
   font-size: 1.2em;
+  position: relative;
+  /* child z-index context */
+  z-index: 2;
+  margin-right: 2px;
+}
+.jumbotron .hero-body h2.teaser .year {
+  font-size: 1.1em;
 }
 @media screen and (min-width: 480px) {
   .jumbotron .hero-body h2.teaser {
@@ -183,52 +191,144 @@ p {
   box-shadow: 0 0 18px 4px #00000042;
 }
 
-.subscribe {
-  padding: 50px 0;
+@media screen and (min-width: 480px) {
+  .subscribe {
+    padding: 50px 0;
+  }
 }
-.subscribe ~ div {
-  max-width: var(--max-width);
+.subscribe .subscribe-wrapper {
+  position: relative;
+  background-color: #333;
+  max-width: 400px;
   margin: auto;
+  padding: 30px;
 }
-.subscribe .embedForm {
-  box-shadow: 0 0 18px 4px #00000042;
+.subscribe .subscribe-wrapper .confirmation-modal {
+  display: none;
+  position: absolute;
+  opacity: 0;
+  transition: all 0.3s ease;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 30px;
+  background-color: #333;
 }
-.subscribe .embedForm h4 {
-  font-family: var(--emphasis-font) !important;
-}
-.subscribe .embedForm p {
-  font-family: var(--emphasis-font) !important;
-  font-size: 1em !important;
-}
-.subscribe #mlb2-5457113.ml-form-embedContainer .ml-form-embedWrapper {
-  background-color: var(--secondary-bg);
-  height: 285px;
-}
-.subscribe .ml-form-successBody {
+.subscribe .subscribe-wrapper .confirmation-modal.sent {
   display: flex;
   align-items: center;
+}
+.subscribe .subscribe-wrapper .confirmation-modal.sent.visible {
+  opacity: 1;
+}
+.subscribe .subscribe-wrapper .confirmation-modal .success-message {
+  font-size: 2em;
   text-align: center;
+  margin: 0;
+  color: var(--text-color);
+}
+.subscribe .subscribe-wrapper .confirmation-modal .close-modal {
+  position: absolute;
+  right: 40px;
+  top: 40px;
+  background: transparent;
+  border-radius: 50%;
+  border-style: solid;
+  padding: 5px;
+  display: block;
+  min-width: 40px;
+  min-height: 40px;
+  text-align: center;
+  display: flex;
+  align-items: center;
   justify-content: center;
-  height: 285px;
+  color: var(--text-reverse-color);
+  font-size: 1.1em;
+  transition: all 0.3s ease;
 }
-.subscribe .ml-form-successBody .ml-form-successContent h4 {
-  text-align: center !important;
-  font-size: 2.5em !important;
+.subscribe .subscribe-wrapper .confirmation-modal .close-modal:hover {
+  border-color: white;
 }
-.subscribe .ml-form-successBody p {
-  text-align: center !important;
-  font-size: 1.5em !important;
-  line-height: 1.5 !important;
+.subscribe .subscribe-wrapper .confirmation-modal .close-modal:hover::before {
+  filter: invert(1);
+}
+.subscribe .subscribe-wrapper .confirmation-modal .close-modal::before {
+  transition: all 0.3s ease;
+  content: "";
+  position: absolute;
+  display: block;
+  background-image: url("close.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  filter: invert(0.8);
+  width: 75%;
+  height: 75%;
+}
+.subscribe .subscribe-wrapper .confirmation-modal .close-modal .close-text {
+  position: absolute;
+  left: -999em;
+}
+.subscribe .subscribe-wrapper .confirmation-modal .close-modal:focus-visible, .subscribe .subscribe-wrapper .confirmation-modal .close-modal:focus {
+  outline: solid var(--text-color) 2px;
+}
+.subscribe .subscribe-wrapper form {
+  display: flex;
+  flex-direction: column;
+}
+.subscribe .subscribe-wrapper .ohnohoney {
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 0;
+  width: 0;
+  z-index: -1;
+}
+.subscribe .subscribe-wrapper h4 {
+  font-family: var(--emphasis-font) !important;
+  color: var(--text-color);
+  margin: 0;
+  font-size: 2em;
+  text-align: center;
+}
+.subscribe .subscribe-wrapper h4 span {
+  display: inline-block;
+  transform: scaleX(-1);
+}
+.subscribe .subscribe-wrapper p {
+  color: var(--text-reverse-color);
+}
+.subscribe .subscribe-wrapper input {
+  padding: 10px;
+  border-radius: 0;
+  margin: 10px 0;
+  border: none;
+}
+.subscribe .subscribe-wrapper .submit-button {
+  background: transparent;
+  border: white solid 5px;
+  font-size: 1.1em;
+  font-family: var(--emphasis-font);
+  font-weight: bold;
+  color: white;
+  transition: all 0.3s ease;
+  position: relative;
+}
+.subscribe .subscribe-wrapper .submit-button:hover {
+  background-color: var(--text-color);
+  color: #333;
+  border-color: var(--text-color);
 }
 
 .site-footer {
   padding: 50px 30px;
   background-color: #444546;
-  color: #dedede;
+  color: var(--text-reverse-color);
   font-family: var(--emphasis-font);
 }
 .site-footer a {
-  color: #dedede;
+  color: var(--text-reverse-color);
   text-decoration: none;
 }
 .site-footer a:hover {
@@ -240,6 +340,9 @@ p {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+}
+.site-footer .footer-content .copyright {
+  color: var(--text-reverse-color);
 }
 .site-footer .footer-content .nav-wrapper {
   display: flex;
