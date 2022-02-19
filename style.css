@@ -194,12 +194,13 @@ p {
 @media screen and (min-width: 480px) {
   .subscribe {
     padding: 50px 0;
+    max-width: 400px;
+    margin: auto;
   }
 }
 .subscribe .subscribe-wrapper {
   position: relative;
   background-color: #333;
-  max-width: 400px;
   margin: auto;
   padding: 30px;
 }
