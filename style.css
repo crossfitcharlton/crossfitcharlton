@@ -30,6 +30,12 @@ p {
   font-family: sans-serif;
 }
 
+/* Safari button fix*/
+input, textarea {
+  -webkit-appearance: none;
+  border-radius: 0;
+}
+
 .jumbotron {
   position: relative;
   width: 100%;
