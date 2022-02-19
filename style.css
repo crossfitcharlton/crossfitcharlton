@@ -292,14 +292,14 @@ input, textarea {
   width: 0;
   z-index: -1;
 }
-.subscribe .subscribe-wrapper h4 {
+.subscribe .subscribe-wrapper h3 {
   font-family: var(--emphasis-font) !important;
   color: var(--text-color);
   margin: 0;
   font-size: 2em;
   text-align: center;
 }
-.subscribe .subscribe-wrapper h4 span {
+.subscribe .subscribe-wrapper h3 span {
   display: inline-block;
   transform: scaleX(-1);
 }
@@ -311,6 +311,7 @@ input, textarea {
   border-radius: 0;
   margin: 10px 0;
   border: none;
+  font-size: 1.3em;
 }
 .subscribe .subscribe-wrapper .submit-button {
   background: transparent;
