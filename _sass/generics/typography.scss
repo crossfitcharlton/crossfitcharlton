@@ -32,6 +32,10 @@ section h2{
     text-align: center;
 }
 
+.cancel-form h2, .hold-form h2 {
+    margin-bottom: 0;
+}
+
 h3 {
     font-size: 2em;
     margin: 25px 0;
